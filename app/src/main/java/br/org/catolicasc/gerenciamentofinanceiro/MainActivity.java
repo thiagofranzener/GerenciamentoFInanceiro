@@ -16,8 +16,6 @@ import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
 
-
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -42,7 +40,10 @@ public class MainActivity extends AppCompatActivity {
 
         viewPagerAdapter.addFragment(new Saldo(), "Saldo");
         viewPager.setAdapter(viewPagerAdapter);
+        tabs.setupWithViewPager(viewPager);
 
+        viewPagerAdapter.addFragment(new grafico(), "Gráfico de despesas");
+        viewPager.setAdapter(viewPagerAdapter);
         tabs.setupWithViewPager(viewPager);
     }
 

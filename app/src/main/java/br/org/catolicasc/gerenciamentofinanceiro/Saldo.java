@@ -17,6 +17,7 @@ public class Saldo extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.saldo,container,false);
+
         plnRenda = view.findViewById(R.id.plnRenda);
         plnGastos = view.findViewById(R.id.plnGastos);
 
