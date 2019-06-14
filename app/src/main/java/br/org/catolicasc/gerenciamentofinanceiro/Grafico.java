@@ -16,10 +16,10 @@ import com.github.mikephil.charting.utils.ColorTemplate;
 import java.util.ArrayList;
 import java.util.List;
 
-public class grafico extends Fragment {
+public class Grafico extends Fragment {
 
-    float itemGrafico[] = {98.6f, 1.4f}; // Definir a % de cada item do gráfico
-    String descricao[] = {"item um", "item dois"}; // Define o nome de cada item do gráfico
+    float itemGrafico[] = {95f, 20f, 40f, 45f}; // Definir a % de cada item do gráfico
+    String descricao[] = {"item um", "item dois", "item tres", "item quatro"}; // Define o nome de cada item do gráfico
     PieChart grafico;
 
     @Nullable

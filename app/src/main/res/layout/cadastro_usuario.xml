@@ -7,7 +7,7 @@
     tools:context=".CadastroUsuario">
 
     <EditText
-        android:id="@+id/edtNome"
+        android:id="@+id/edtDescricaoDesp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
@@ -28,7 +28,7 @@
         android:inputType="textPersonName"
         android:text="Data de nascimento"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/edtNome" />
+        app:layout_constraintTop_toBottomOf="@+id/edtDescricaoDesp" />
 
     <EditText
         android:id="@+id/edtCPF"
