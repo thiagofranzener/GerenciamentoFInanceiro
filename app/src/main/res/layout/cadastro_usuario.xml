@@ -7,7 +7,7 @@
     tools:context=".CadastroUsuario">
 
     <EditText
-        android:id="@+id/edtNome"
+        android:id="@+id/edtNomeDesp"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:ems="10"
@@ -101,7 +101,7 @@
         android:layout_marginTop="8dp"
         android:text="Data de nascimento"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/edtNome" />
+        app:layout_constraintTop_toBottomOf="@+id/edtNomeDesp" />
 
     <TextView
         android:id="@+id/textView3"

@@ -1,7 +1,6 @@
 package br.org.catolicasc.gerenciamentofinanceiro;
 
 import android.content.Intent;
-import android.service.autofill.FillEventHistory;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -25,7 +24,7 @@ public class CadastroUsuario extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.cadastro_usuario);
 
-        edtNome = findViewById(R.id.edtNome);
+        edtNome = findViewById(R.id.edtNomeDesp);
         edtDataNasc = findViewById(R.id.edtDataNasc);
         edtCPF = findViewById(R.id.edtCPF);
         edtEmail = findViewById(R.id.edtEmail);

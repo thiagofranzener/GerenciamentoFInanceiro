@@ -7,7 +7,7 @@
     tools:context=".AdicionarReceita">
 
     <EditText
-        android:id="@+id/edtNome"
+        android:id="@+id/edtNomeDesp"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
@@ -47,7 +47,7 @@
         android:inputType="number"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/edtNome" />
+        app:layout_constraintTop_toBottomOf="@+id/edtNomeDesp" />
 
     <EditText
         android:id="@+id/edtDataDesp"
@@ -79,9 +79,12 @@
         android:id="@+id/spinner2"
         android:layout_width="395dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
+        android:layout_marginStart="24dp"
         android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
+        android:entries="@array/categorias"
+        android:prompt="@string/categorias"
+        android:visibility="visible"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/edtDataDesp" />

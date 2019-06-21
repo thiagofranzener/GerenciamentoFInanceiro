@@ -10,22 +10,18 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+        <activity android:name=".ConfirmarSenha"></activity>
         <activity
             android:name=".MainActivity"
             android:label="@string/title_activity_main_activity"
             android:theme="@style/AppTheme.NoActionBar">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
         <activity
             android:name=".AdicionarDespesa"
-            android:parentActivityName=".MenuPrincipal"></activity>
+            android:parentActivityName=".MenuPrincipal" />
         <activity
             android:name=".CadastroUsuario"
-            android:parentActivityName=".MainActivity"></activity>
+            android:parentActivityName=".MainActivity" />
         <activity
             android:name=".AdicionarReceita"
             android:parentActivityName=".MenuPrincipal" />
@@ -37,7 +33,11 @@
             android:name=".MenuPrincipal"
             android:label="@string/app_name"
             android:theme="@style/AppTheme.NoActionBar">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
 
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
         </activity>
     </application>
 
