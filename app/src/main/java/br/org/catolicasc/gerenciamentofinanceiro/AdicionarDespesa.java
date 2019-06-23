@@ -1,5 +1,6 @@
 package br.org.catolicasc.gerenciamentofinanceiro;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -26,9 +27,9 @@ public class AdicionarDespesa extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.adicionar_despesa);
 
-        edtNomeDesp = findViewById(R.id.edtNomeDesp);
+        /*edtNomeDesp = findViewById(R.id.edtNomeDesp);
         edtValorDesp = findViewById(R.id.edtValorDesp);
-        edtDataDesp = findViewById(R.id.edtDataDesp);
+        edtDataDesp = findViewById(R.id.edtDataDesp);*/
 
         Spinner spinner = findViewById(R.id.spinner2);
         List<String> categorias = new ArrayList<>(Arrays.asList("Contas","Carro","Lazer","Mercado"));
@@ -38,6 +39,20 @@ public class AdicionarDespesa extends AppCompatActivity {
         dataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
 
         spinner.setAdapter(dataAdapter);
+
+        View.OnClickListener telaMenu = new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                openMenu();
+            }
+        };
+
+        btnAddDespesa.setOnClickListener(telaMenu);
+    }
+
+    private void openMenu() {
+        Intent intent = new Intent(this, MenuPrincipal.class);
+        startActivity(intent);
     }
 
 }
