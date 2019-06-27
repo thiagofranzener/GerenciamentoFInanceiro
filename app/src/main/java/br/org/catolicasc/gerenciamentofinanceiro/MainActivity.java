@@ -7,6 +7,7 @@ import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListAdapter;
 import android.widget.ListView;
@@ -26,6 +27,8 @@ public class MainActivity extends AppCompatActivity {
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
+        mDatabaseUsuario = new DataBaseUsuario(this);
+
         FloatingActionButton fab = findViewById(R.id.btnAddUsuario);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -41,32 +44,30 @@ public class MainActivity extends AppCompatActivity {
 
     public void populateListView() {
         Cursor data = mDatabaseUsuario.getData();
-        ArrayList<String> listData = new ArrayList<>();
+        final ArrayList<String> listData = new ArrayList<>();
 
         String item = "";
 
         while(data.moveToNext()){
-            item = "Usuário: ".concat(data.getString(0)
-                    .concat("\nCpf: ".concat(data.getString(2))));
+            item = data.getString(0);
 
             listData.add(item);
         }
 
         ListAdapter adapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, listData);
         mListView.setAdapter(adapter);
-
-        View.OnClickListener menu = new View.OnClickListener() {
+        mListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
-            public void onClick(View v) {
-                openMenu();
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Toast.makeText(MainActivity.this, listData.get(position)+"", Toast.LENGTH_SHORT).show();
+                openConfirmaSenha(listData.get(position));
             }
-        };
-
-        //btnCadastrar.setOnClickListener(tela2);
+        });
     }
 
-    private void openMenu() {
-        Intent intent = new Intent(this, MenuPrincipal.class);
+    private void openConfirmaSenha(String usuario) {
+        Intent intent = new Intent(this, ConfirmarSenha.class);
+        intent.putExtra("usuario", usuario);
         startActivity(intent);
     }
 }
