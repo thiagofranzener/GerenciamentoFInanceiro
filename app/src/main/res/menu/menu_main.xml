@@ -10,4 +10,8 @@
         android:id="@+id/addDespesa"
         android:title="Adicionar despesa"
         app:showAsAction="never"/>
+    <item
+        android:id="@+id/Sair"
+        android:title="Sair"
+        app:showAsAction="never"/>
 </menu>

@@ -18,7 +18,7 @@ import java.util.List;
 
 public class Grafico extends Fragment {
 
-    float itemGrafico[] = {95f, 20f, 40f, 45f}; // Definir a % de cada item do gráfico
+    float itemGrafico[] = {95, 20, 40, 45}; // Definir a % de cada item do gráfico
     String descricao[] = {"item um", "item dois", "item tres", "item quatro"}; // Define o nome de cada item do gráfico
     PieChart grafico;
 
@@ -30,7 +30,13 @@ public class Grafico extends Fragment {
         grafico = (PieChart) view2.findViewById(R.id.grafico);
 
         List<PieEntry> entradaGrafico = new ArrayList<>();
+
+        //Fazer select
+
+        //Pegar dados do select e jogar aqui
         for(int i = 0;i < itemGrafico.length; i++) {
+
+
             entradaGrafico.add(new PieEntry(itemGrafico[i], descricao[i]));
         }
 

@@ -8,14 +8,15 @@ import android.database.sqlite.SQLiteOpenHelper;
 
 public class DataBaseReceita extends SQLiteOpenHelper {
 
-    private static final String TAG = "DataBaseUsuario";
+    private static final String TAG = "DataBaseReceita";
 
     private static final String TABLE_NAME = "receita";
-    private static final String COL1 = "descricao";
-    private static final String COL2 = "valor";
-    private static final String COL3 = "data";
+    private static final String COL1 = "usuario";
+    private static final String COL2 = "descricao";
+    private static final String COL3 = "valor";
+    private static final String COL4 = "data";
 
-    public DataBaseUsuario(Context context) {
+    public DataBaseReceita(Context context) {
         super(context, TABLE_NAME, null, 1);
     }
 
@@ -24,8 +25,9 @@ public class DataBaseReceita extends SQLiteOpenHelper {
         try{
             String createTable = "CREATE TABLE " + TABLE_NAME +
                     " (" + COL1 + " TEXT PRIMARY KEY," +
-                    COL2 + " FLOAT," +
-                    COL3 + " TEXT,";
+                    COL2 + " TEXT," +
+                    COL3 + " FLOAT," +
+                    COL4 + " TEXT)";
 
             db.execSQL(createTable);
         } catch (Exception ex) {

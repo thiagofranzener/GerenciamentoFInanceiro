@@ -17,10 +17,14 @@ import java.util.ArrayList;
 
 public class MenuPrincipal extends AppCompatActivity {
 
+    private DataBaseUsuario mDatabaseUsuario;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.menu_principal);
+
+        mDatabaseUsuario = new DataBaseUsuario(this);
 
         ViewPager viewPager = findViewById(R.id.view_pager);
 
@@ -56,6 +60,10 @@ public class MenuPrincipal extends AppCompatActivity {
                 return true;
             case R.id.addDespesa:
                 startActivity(new Intent(MenuPrincipal.this, AdicionarDespesa.class).setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP));
+                return true;
+            case R.id.Sair:
+                mDatabaseUsuario.logOut();
+                startActivity(new Intent(MenuPrincipal.this, MainActivity.class).setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP));
                 return true;
         }
         return false;

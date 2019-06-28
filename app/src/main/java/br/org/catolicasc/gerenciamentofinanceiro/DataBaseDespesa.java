@@ -8,14 +8,16 @@ import android.database.sqlite.SQLiteOpenHelper;
 
 public class DataBaseDespesa extends SQLiteOpenHelper {
 
-    private static final String TAG = "DataBaseUsuario";
+    private static final String TAG = "DataBaseDespesa";
 
-    private static final String TABLE_NAME = "receita";
-    private static final String COL1 = "descricao";
-    private static final String COL2 = "valor";
-    private static final String COL3 = "data";
+    private static final String TABLE_NAME = "despesa";
+    private static final String COL1 = "usuario";
+    private static final String COL2 = "descricao";
+    private static final String COL3 = "descricao";
+    private static final String COL4 = "valor";
+    private static final String COL5 = "data";
 
-    public DataBaseUsuario(Context context) {
+    public DataBaseDespesa(Context context) {
         super(context, TABLE_NAME, null, 1);
     }
 
@@ -24,8 +26,10 @@ public class DataBaseDespesa extends SQLiteOpenHelper {
         try{
             String createTable = "CREATE TABLE " + TABLE_NAME +
                     " (" + COL1 + " TEXT PRIMARY KEY," +
-                    COL2 + " FLOAT," +
-                    COL3 + " TEXT,";
+                    COL2 + " TEXT," +
+                    COL3 + " TEXT," +
+                    COL4 + " FLOAT," +
+                    COL5 + " TEXT)";
 
             db.execSQL(createTable);
         } catch (Exception ex) {

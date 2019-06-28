@@ -30,8 +30,9 @@ public class ConfirmarSenha extends AppCompatActivity {
         mDatabaseUsuario = new DataBaseUsuario(this);
 
         Intent intent = getIntent();
-        String usuario = intent.getStringExtra("usuario");
-        ArrayList<String> listData = new ArrayList<>();
+        final String usuario = intent.getStringExtra("usuario");
+
+        txtNomeUsuario.setText(usuario);
 
         View.OnClickListener verificaSenha = new View.OnClickListener() {
             @Override
@@ -51,6 +52,7 @@ public class ConfirmarSenha extends AppCompatActivity {
                 }
 
                 if(edtConfirmarSenha.getText().toString().equals(senha)){
+                    mDatabaseUsuario.setLoggedUser(usuario);
                     openMenu();
                 }else{
                     mostraMensagem("Senha incorreta!");

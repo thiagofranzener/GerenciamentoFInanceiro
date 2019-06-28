@@ -31,9 +31,6 @@ public class CadastroUsuario extends AppCompatActivity {
         edtSenha = findViewById(R.id.edtSenha);
         edtConfSenha = findViewById(R.id.edtConfSenha);
 
-
-        //String nome = txtNome.getText().toString();
-
         mDatabaseUsuario = new DataBaseUsuario(this);
         btnAddUsuario = findViewById(R.id.btnAddUsuario);
         btnAddUsuario.setOnClickListener(new View.OnClickListener() {
@@ -52,7 +49,7 @@ public class CadastroUsuario extends AppCompatActivity {
                     return;
                 }
 
-                mDatabaseUsuario.addData(nome,dataNasc,cpf,email,senha);
+                mDatabaseUsuario.addData(nome,dataNasc,cpf,email,senha, false);
                 mostraMensagem("Salvo com sucesso!");
                 openMainActivity();
             }
@@ -64,6 +61,8 @@ public class CadastroUsuario extends AppCompatActivity {
     }
 
     private void openMainActivity() {
+        MainActivity ble = new MainActivity();
+        ble.populateListView();
         Intent intent = new Intent(this, MainActivity.class);
         startActivity(intent);
     }
