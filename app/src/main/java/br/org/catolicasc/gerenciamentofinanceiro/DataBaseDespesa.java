@@ -13,7 +13,7 @@ public class DataBaseDespesa extends SQLiteOpenHelper {
     private static final String TABLE_NAME = "despesa";
     private static final String COL1 = "usuario";
     private static final String COL2 = "descricao";
-    private static final String COL3 = "descricao";
+    private static final String COL3 = "categoria";
     private static final String COL4 = "valor";
     private static final String COL5 = "data";
 
@@ -44,12 +44,14 @@ public class DataBaseDespesa extends SQLiteOpenHelper {
         onCreate(db);
     }
 
-    public boolean addData(String descricao, Double valor, String data) {
+    public boolean addData(String usuario, String descricao, String categoria, Double valor, String data) {
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues contentValues = new ContentValues();
-        contentValues.put(COL1, descricao);
-        contentValues.put(COL2, valor);
-        contentValues.put(COL3, data);
+        contentValues.put(COL1, usuario);
+        contentValues.put(COL2, descricao);
+        contentValues.put(COL3, categoria);
+        contentValues.put(COL4, valor);
+        contentValues.put(COL5, data);
 
         long result = db.insert(TABLE_NAME, null, contentValues);
 

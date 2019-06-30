@@ -42,12 +42,13 @@ public class DataBaseReceita extends SQLiteOpenHelper {
         onCreate(db);
     }
 
-    public boolean addData(String descricao, Double valor, String data) {
+    public boolean addData(String usuario, String descricao, Double valor, String data) {
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues contentValues = new ContentValues();
-        contentValues.put(COL1, descricao);
-        contentValues.put(COL2, valor);
-        contentValues.put(COL3, data);
+        contentValues.put(COL1, usuario);
+        contentValues.put(COL2, descricao);
+        contentValues.put(COL3, valor);
+        contentValues.put(COL4, data);
 
         long result = db.insert(TABLE_NAME, null, contentValues);
 
