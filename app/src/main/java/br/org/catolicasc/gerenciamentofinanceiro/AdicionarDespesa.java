@@ -16,6 +16,8 @@ import java.util.List;
 
 public class AdicionarDespesa extends AppCompatActivity {
 
+    private DataBaseUsuario mDatabaseUsuario;
+    private DataBaseDespesa mDatabaseDespesa;
     private Spinner spinner2;
     private Button btnAddDespesa;
     private EditText edtNomeDesp;
@@ -27,11 +29,15 @@ public class AdicionarDespesa extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.adicionar_despesa);
 
+        mDatabaseUsuario = new DataBaseUsuario(this);
+        mDatabaseDespesa = new DataBaseDespesa(this);
+
         edtNomeDesp = findViewById(R.id.edtNomeDesp);
         edtValorDesp = findViewById(R.id.edtValorDesp);
         edtDataDesp = findViewById(R.id.edtDataDesp);
+        btnAddDespesa = findViewById(R.id.btnAddDespesa);
 
-        Spinner spinner = findViewById(R.id.spinner2);
+        final Spinner spinner = findViewById(R.id.spinner2);
         List<String> categorias = new ArrayList<>(Arrays.asList("Contas","Carro","Lazer","Mercado"));
 
         ArrayAdapter<String> dataAdapter = new ArrayAdapter<String>(this,
@@ -43,11 +49,29 @@ public class AdicionarDespesa extends AppCompatActivity {
         View.OnClickListener salvar = new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                try {
+                    String nome = edtNomeDesp.getText().toString();
+                    Double valor = Double.parseDouble(edtValorDesp.getText().toString());
+                    String data = edtDataDesp.getText().toString();
+                    String usuario = mDatabaseUsuario.getLoggedUser();
+                    String categoria = spinner.getSelectedItem().toString();
 
+                    if(mDatabaseDespesa.addData(usuario,nome,categoria,valor,data)) {
+                        mostraMensagem("Despesa salva com sucesso!");
+                    } else {
+                        mostraMensagem("Erro ao salvar despesa!");
+                    }
+                } catch (Exception ex) {
+                    System.out.println(ex.getMessage());
+                    mostraMensagem("Erro ao salvar despesa!");
+                }
             }
         };
 
         btnAddDespesa.setOnClickListener(salvar);
     }
 
+    private void mostraMensagem(String msg){
+        Toast.makeText(this, msg, Toast.LENGTH_SHORT).show();
+    }
 }

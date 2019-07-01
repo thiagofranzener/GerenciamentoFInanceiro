@@ -37,21 +37,29 @@ public class CadastroUsuario extends AppCompatActivity {
             @Override
             public void onClick(View view) {
 
-                String nome = edtNome.getText().toString();
-                String dataNasc = edtDataNasc.getText().toString();
-                String cpf = edtCPF.getText().toString();
-                String email = edtEmail.getText().toString();
-                String senha = edtSenha.getText().toString();
-                String confSenha = edtConfSenha.getText().toString();
+                try {
+                    String nome = edtNome.getText().toString();
+                    String dataNasc = edtDataNasc.getText().toString();
+                    String cpf = edtCPF.getText().toString();
+                    String email = edtEmail.getText().toString();
+                    String senha = edtSenha.getText().toString();
+                    String confSenha = edtConfSenha.getText().toString();
 
-                if (!senha.equals(confSenha)){
-                    mostraMensagem("Senhas não conferem!");
-                    return;
+                    if (!senha.equals(confSenha)){
+                        mostraMensagem("Senhas não conferem!");
+                        return;
+                    }
+
+                    if(mDatabaseUsuario.addData(nome,dataNasc,cpf,email,senha, false)){
+                        mostraMensagem("Usuário salvo com sucesso!");
+                        openMainActivity();
+                    } else {
+                        mostraMensagem("Erro ao salvar usuário!");
+                    }
+                } catch (Exception ex) {
+                    System.out.println(ex.getMessage());
+                    mostraMensagem("Erro ao salvar usuário!");
                 }
-
-                mDatabaseUsuario.addData(nome,dataNasc,cpf,email,senha, false);
-                mostraMensagem("Salvo com sucesso!");
-                openMainActivity();
             }
         });
     }

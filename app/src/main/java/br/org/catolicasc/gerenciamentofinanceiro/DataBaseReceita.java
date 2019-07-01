@@ -11,10 +11,11 @@ public class DataBaseReceita extends SQLiteOpenHelper {
     private static final String TAG = "DataBaseReceita";
 
     private static final String TABLE_NAME = "receita";
-    private static final String COL1 = "usuario";
-    private static final String COL2 = "descricao";
-    private static final String COL3 = "valor";
-    private static final String COL4 = "data";
+    private static final String COL1 = "id";
+    private static final String COL2 = "usuario";
+    private static final String COL3 = "descricao";
+    private static final String COL4 = "valor";
+    private static final String COL5 = "data";
 
     public DataBaseReceita(Context context) {
         super(context, TABLE_NAME, null, 1);
@@ -24,10 +25,11 @@ public class DataBaseReceita extends SQLiteOpenHelper {
     public void onCreate(SQLiteDatabase db) {
         try{
             String createTable = "CREATE TABLE " + TABLE_NAME +
-                    " (" + COL1 + " TEXT PRIMARY KEY," +
+                    " (" + COL1 + " INTEGER PRIMARY KEY AUTOINCREMENT," +
                     COL2 + " TEXT," +
-                    COL3 + " FLOAT," +
-                    COL4 + " TEXT)";
+                    COL3 + " TEXT," +
+                    COL4 + " FLOAT," +
+                    COL5 + " TEXT)";
 
             db.execSQL(createTable);
         } catch (Exception ex) {
@@ -45,10 +47,10 @@ public class DataBaseReceita extends SQLiteOpenHelper {
     public boolean addData(String usuario, String descricao, Double valor, String data) {
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues contentValues = new ContentValues();
-        contentValues.put(COL1, usuario);
-        contentValues.put(COL2, descricao);
-        contentValues.put(COL3, valor);
-        contentValues.put(COL4, data);
+        contentValues.put(COL2, usuario);
+        contentValues.put(COL3, descricao);
+        contentValues.put(COL4, valor);
+        contentValues.put(COL5, data);
 
         long result = db.insert(TABLE_NAME, null, contentValues);
 
@@ -63,6 +65,13 @@ public class DataBaseReceita extends SQLiteOpenHelper {
     public Cursor getData(){
         SQLiteDatabase db = this.getWritableDatabase();
         String query = "SELECT * FROM " + TABLE_NAME;
+        Cursor data = db.rawQuery(query, null);
+        return data;
+    }
+
+    public Cursor getDataUser(String usuario){
+        SQLiteDatabase db = this.getWritableDatabase();
+        String query = "SELECT * FROM " + TABLE_NAME + " WHERE " + COL2 + "='" + usuario + "'";
         Cursor data = db.rawQuery(query, null);
         return data;
     }
