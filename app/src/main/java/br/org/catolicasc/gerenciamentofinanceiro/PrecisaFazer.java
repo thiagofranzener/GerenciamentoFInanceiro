@@ -4,9 +4,15 @@ public class PrecisaFazer {
 
     /**
      *
-     * Jogar despesas para o gráfico
-    arrumar o botão "sair" do menu que está com erro
-    arrumar tela saldo para que receba as informações do database de despesa e renda
+
+
+     Jogar despesas para o gráfico
+     Testar o App.
+
+
+
+    --arrumar o botão "sair" do menu que está com erro
+    --arrumar tela saldo para que receba as informações do database de despesa e renda
 
      **/
 
