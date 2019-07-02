@@ -44,7 +44,7 @@ public class DataBaseReceita extends SQLiteOpenHelper {
         onCreate(db);
     }
 
-    public boolean addData(String usuario, String descricao, Double valor, String data) {
+    public boolean addData(String usuario, String descricao, float valor, String data) {
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues contentValues = new ContentValues();
         contentValues.put(COL2, usuario);

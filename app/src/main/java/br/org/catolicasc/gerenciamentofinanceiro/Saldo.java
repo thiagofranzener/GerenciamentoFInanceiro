@@ -8,6 +8,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 import android.database.Cursor;
+import android.widget.Toast;
 
 public class Saldo extends Fragment {
 
@@ -31,22 +32,26 @@ public class Saldo extends Fragment {
         plnGastos = view.findViewById(R.id.plnGastos);
 
         String usuario = mDatabaseUsuario.getLoggedUser();
-
+        mostraMensagem("Usuário: " + usuario);
         Cursor receitas = mDatabaseReceita.getDataUser(usuario);
-        Double somaReceita = 0.0;
+        Float somaReceita = Float.parseFloat("0");
         while(receitas.moveToNext()){
-            somaReceita += Double.parseDouble(receitas.getString(4));
+            somaReceita += Float.parseFloat(receitas.getString(3));
         }
 
-        Cursor despesas = mDatabaseDespesa.getDataUser(usuario);
-        Double somaDespesa = 0.0;
+        Cursor despesas = mDatabaseDespesa.getDataUser(usuario,false);
+        Float somaDespesa = Float.parseFloat("0");
         while(despesas.moveToNext()){
-            somaDespesa += Double.parseDouble(despesas.getString(4));
+            somaDespesa += Float.parseFloat(despesas.getString(4));
         }
 
         plnRenda.setText(somaReceita.toString());
         plnGastos.setText(somaDespesa.toString());
 
         return view;
+    }
+
+    private void mostraMensagem(String msg){
+        Toast.makeText(this.getContext(), msg, Toast.LENGTH_SHORT).show();
     }
 }

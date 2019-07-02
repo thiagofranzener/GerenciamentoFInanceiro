@@ -5,6 +5,7 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.widget.Toast;
 
 import java.util.Date;
 
@@ -84,7 +85,7 @@ public class DataBaseUsuario extends SQLiteOpenHelper {
         Cursor data = getData();
         String usuario = "";
         while(data.moveToNext()){
-            if (data.getString(5).equals(1)){
+            if (data.getString(5).equals("1")){
                 usuario = data.getString(0);
             }
         }
@@ -92,6 +93,7 @@ public class DataBaseUsuario extends SQLiteOpenHelper {
     }
 
     public void setLoggedUser(String usuario){
+        logOut();
         SQLiteDatabase db = this.getWritableDatabase();
         String logIn = "UPDATE " + TABLE_NAME + " SET " + COL6 + "=1 WHERE " + COL1 + "='" + usuario + "'";
         db.execSQL(logIn);
@@ -102,5 +104,4 @@ public class DataBaseUsuario extends SQLiteOpenHelper {
         String logOut = "UPDATE " + TABLE_NAME + " SET " + COL6 + "=0";
         db.execSQL(logOut);
     }
-
 }

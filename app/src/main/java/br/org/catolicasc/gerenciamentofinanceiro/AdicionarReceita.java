@@ -3,6 +3,7 @@ package br.org.catolicasc.gerenciamentofinanceiro;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.Menu;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -36,12 +37,13 @@ public class AdicionarReceita extends AppCompatActivity {
             public void onClick(View v) {
                 try {
                     String descricao = edtDescricaoRec.getText().toString();
-                    Double valor = Double.parseDouble(edtValorRec.getText().toString());
+                    Float valor = Float.parseFloat(edtValorRec.getText().toString());
                     String data = edtDataRec.getText().toString();
                     String usuario = mDatabaseUsuario.getLoggedUser();
 
                   if(mDatabaseReceita.addData(usuario,descricao,valor,data)) {
                       mostraMensagem("Receita salva com sucesso!");
+                      openMenu();
                   } else {
                       mostraMensagem("Erro ao salvar receita!");
                   }
@@ -58,5 +60,10 @@ public class AdicionarReceita extends AppCompatActivity {
 
     private void mostraMensagem(String msg){
         Toast.makeText(this, msg, Toast.LENGTH_SHORT).show();
+    }
+
+    private void openMenu() {
+        Intent intent = new Intent(this, MenuPrincipal.class);
+        startActivity(intent);
     }
 }

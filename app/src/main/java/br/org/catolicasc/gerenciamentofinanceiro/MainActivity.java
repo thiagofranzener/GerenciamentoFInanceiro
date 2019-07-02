@@ -43,14 +43,14 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void populateListView() {
-        Cursor data = mDatabaseUsuario.getData();
+
         final ArrayList<String> listData = new ArrayList<>();
 
         String item = "";
 
+        Cursor data = mDatabaseUsuario.getData();
         while(data.moveToNext()){
             item = data.getString(0);
-
             listData.add(item);
         }
 
@@ -59,7 +59,6 @@ public class MainActivity extends AppCompatActivity {
         mListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                Toast.makeText(MainActivity.this, listData.get(position)+"", Toast.LENGTH_SHORT).show();
                 openConfirmaSenha(listData.get(position));
             }
         });
@@ -69,5 +68,9 @@ public class MainActivity extends AppCompatActivity {
         Intent intent = new Intent(this, ConfirmarSenha.class);
         intent.putExtra("usuario", usuario);
         startActivity(intent);
+    }
+
+    private void mostraMensagem(String msg){
+        Toast.makeText(this, msg, Toast.LENGTH_SHORT).show();
     }
 }

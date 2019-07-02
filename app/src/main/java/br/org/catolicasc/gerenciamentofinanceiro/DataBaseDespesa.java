@@ -46,7 +46,7 @@ public class DataBaseDespesa extends SQLiteOpenHelper {
         onCreate(db);
     }
 
-    public boolean addData(String usuario, String descricao, String categoria, Double valor, String data) {
+    public boolean addData(String usuario, String descricao, String categoria, float valor, String data) {
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues contentValues = new ContentValues();
         contentValues.put(COL2, usuario);
@@ -72,9 +72,16 @@ public class DataBaseDespesa extends SQLiteOpenHelper {
         return data;
     }
 
-    public Cursor getDataUser(String usuario){
+    public Cursor getDataUser(String usuario, boolean agruparCategoria){
         SQLiteDatabase db = this.getWritableDatabase();
         String query = "SELECT * FROM " + TABLE_NAME + " WHERE " + COL2 + "='" + usuario + "'";
+        Cursor data = db.rawQuery(query, null);
+        return data;
+    }
+
+    public Cursor getDataUserByCategory(String usuario){
+        SQLiteDatabase db = this.getWritableDatabase();
+        String query = "SELECT " + COL4 + ", SUM(" + COL5 + ") FROM " + TABLE_NAME + " WHERE " + COL2 + "='" + usuario + "'" +  " GROUP BY " + COL4;
         Cursor data = db.rawQuery(query, null);
         return data;
     }

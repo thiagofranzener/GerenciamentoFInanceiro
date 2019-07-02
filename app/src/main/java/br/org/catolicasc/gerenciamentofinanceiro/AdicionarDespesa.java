@@ -51,13 +51,14 @@ public class AdicionarDespesa extends AppCompatActivity {
             public void onClick(View v) {
                 try {
                     String nome = edtNomeDesp.getText().toString();
-                    Double valor = Double.parseDouble(edtValorDesp.getText().toString());
+                    Float valor = Float.parseFloat(edtValorDesp.getText().toString());
                     String data = edtDataDesp.getText().toString();
                     String usuario = mDatabaseUsuario.getLoggedUser();
                     String categoria = spinner.getSelectedItem().toString();
 
                     if(mDatabaseDespesa.addData(usuario,nome,categoria,valor,data)) {
                         mostraMensagem("Despesa salva com sucesso!");
+                        openMenu();
                     } else {
                         mostraMensagem("Erro ao salvar despesa!");
                     }
@@ -73,5 +74,10 @@ public class AdicionarDespesa extends AppCompatActivity {
 
     private void mostraMensagem(String msg){
         Toast.makeText(this, msg, Toast.LENGTH_SHORT).show();
+    }
+
+    private void openMenu() {
+        Intent intent = new Intent(this, MenuPrincipal.class);
+        startActivity(intent);
     }
 }

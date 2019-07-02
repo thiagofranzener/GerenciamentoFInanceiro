@@ -60,6 +60,7 @@ public class CadastroUsuario extends AppCompatActivity {
                     System.out.println(ex.getMessage());
                     mostraMensagem("Erro ao salvar usuário!");
                 }
+
             }
         });
     }
@@ -69,8 +70,6 @@ public class CadastroUsuario extends AppCompatActivity {
     }
 
     private void openMainActivity() {
-        MainActivity ble = new MainActivity();
-        ble.populateListView();
         Intent intent = new Intent(this, MainActivity.class);
         startActivity(intent);
     }

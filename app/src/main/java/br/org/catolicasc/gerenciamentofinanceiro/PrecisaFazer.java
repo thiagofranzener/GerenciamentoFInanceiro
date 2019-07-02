@@ -6,7 +6,7 @@ public class PrecisaFazer {
      *
 
 
-     Jogar despesas para o gráfico
+     --Jogar despesas para o gráfico
      Testar o App.
 
 
