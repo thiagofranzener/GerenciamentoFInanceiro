@@ -18,6 +18,7 @@ public class Saldo extends Fragment {
 
     TextView plnRenda;
     TextView plnGastos;
+    TextView plnDiferenca;
 
     @Nullable
     @Override
@@ -30,6 +31,7 @@ public class Saldo extends Fragment {
 
         plnRenda = view.findViewById(R.id.plnRenda);
         plnGastos = view.findViewById(R.id.plnGastos);
+        plnDiferenca = view.findViewById(R.id.plnDiferenca);
 
         String usuario = mDatabaseUsuario.getLoggedUser();
         mostraMensagem("Usuário: " + usuario);
@@ -48,6 +50,10 @@ public class Saldo extends Fragment {
         plnRenda.setText(somaReceita.toString());
         plnGastos.setText(somaDespesa.toString());
 
+        Float diferenca = Float.parseFloat("0");
+        diferenca = somaReceita - somaDespesa;
+
+        plnDiferenca.setText(diferenca.toString());
         return view;
     }
 

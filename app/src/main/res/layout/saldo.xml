@@ -7,6 +7,17 @@
     tools:context=".Saldo">
 
     <TextView
+        android:id="@+id/txtDiferenca"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="24dp"
+        android:text="Diferença:"
+        android:textSize="24sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txtGastos" />
+
+    <TextView
         android:id="@+id/txtTitulo"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -58,5 +69,14 @@
         android:textSize="24sp"
         app:layout_constraintBaseline_toBaselineOf="@+id/txtGastos"
         app:layout_constraintStart_toEndOf="@+id/txtGastos" />
+
+    <TextView
+        android:id="@+id/plnDiferenca"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:textSize="24sp"
+        app:layout_constraintBaseline_toBaselineOf="@+id/txtDiferenca"
+        app:layout_constraintStart_toEndOf="@+id/txtDiferenca" />
 
 </android.support.constraint.ConstraintLayout>

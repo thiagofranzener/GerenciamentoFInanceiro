@@ -59,9 +59,12 @@ public class Grafico extends Fragment {
         PieDataSet dataSet = new PieDataSet(entradaGrafico, "");
         dataSet.setColors(ColorTemplate.COLORFUL_COLORS);
 
+
         PieData pieData = new PieData(dataSet);
+
         grafico.setData(pieData);
         grafico.invalidate();
+        grafico.getDescription().setEnabled(false);
 
         return view2;
     }
